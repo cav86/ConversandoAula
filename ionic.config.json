@@ -1,0 +1,7 @@
+{
+  "name": "ConversandoAula",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
