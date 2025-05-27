@@ -1,3 +1,18 @@
+ion-content {
+  --background: none !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+}
+
+.fondo-a {
+  background-image: url('/assets/img/fondo-azul.jpg');
+}
+
+.fondo-b {
+  background-image: url('/assets/img/fondo-verde.jpg');
+}
+
 .chat-container {
   padding: 10px;
   display: flex;
@@ -5,27 +20,30 @@
 }
 
 .mensaje {
+  background-color: rgba(255, 255, 255, 0.8); // blanco semitransparente
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin: 6px 0;
   max-width: 80%;
-  margin: 5px 0;
-  padding: 8px;
-  border-radius: 10px;
-  background-color: #e0e0e0;
-  text-align: left;
+  word-break: break-word;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .propios {
-  background-color: #cce5ff;
-  margin-left: auto;
-  text-align: right;
+  align-self: flex-end;
+  background-color: rgba(173, 216, 230, 0.8); // azul claro semitransparente
 }
 
 .autor {
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 0.75rem;
   margin-bottom: 2px;
+  color: #333;
 }
 
 .fecha {
-  font-size: 0.7em;
+  font-size: 0.7rem;
   opacity: 0.6;
+  margin-top: 4px;
+  text-align: right;
 }

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [ngClass]="sala === 'PPS-4A' ? 'fondo-a' : 'fondo-b'">
   <div class="chat-container">
     <div *ngFor="let msg of mensajes" class="mensaje" [class.propios]="msg.usuario_id === userId">
       <div class="autor" *ngIf="msg.usuario_id !== userId">
