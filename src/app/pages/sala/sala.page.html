@@ -6,9 +6,9 @@
 
 <ion-content [fullscreen]="true">
   <div class="chat-container">
-    <div *ngFor="let msg of mensajes" [class.propios]="msg.usuario_id === userId" class="mensaje">
+    <div *ngFor="let msg of mensajes" class="mensaje" [class.propios]="msg.usuario_id === userId">
       <div class="autor" *ngIf="msg.usuario_id !== userId">
-        {{ msg.usuario_id }}
+        {{ msg.nombre }}
       </div>
       <div class="contenido">
         {{ msg.mensaje }}
@@ -18,13 +18,17 @@
       </div>
     </div>
   </div>
-
-  <ion-footer>
-    <ion-toolbar>
-      <ion-item>
-        <ion-input [(ngModel)]="mensaje" placeholder="Escribí un mensaje..."></ion-input>
-        <ion-button (click)="enviarMensaje()">Enviar</ion-button>
-      </ion-item>
-    </ion-toolbar>
-  </ion-footer>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <ion-input
+        [(ngModel)]="mensaje"
+        placeholder="Escribí un mensaje..."
+        (keyup.enter)="enviarMensaje()"
+      ></ion-input>
+      <ion-button (click)="enviarMensaje()">Enviar</ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

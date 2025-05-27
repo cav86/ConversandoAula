@@ -1,5 +1,7 @@
 .chat-container {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .mensaje {
