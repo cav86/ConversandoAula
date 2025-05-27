@@ -1,0 +1,29 @@
+.chat-container {
+  padding: 10px;
+}
+
+.mensaje {
+  max-width: 80%;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  text-align: left;
+}
+
+.propios {
+  background-color: #cce5ff;
+  margin-left: auto;
+  text-align: right;
+}
+
+.autor {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-bottom: 2px;
+}
+
+.fecha {
+  font-size: 0.7em;
+  opacity: 0.6;
+}

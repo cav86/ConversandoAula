@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar [color]="sala === 'PPS-4A' ? 'primary' : 'success'">
+    <ion-title>{{ sala }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="chat-container">
+    <div *ngFor="let msg of mensajes" [class.propios]="msg.usuario_id === userId" class="mensaje">
+      <div class="autor" *ngIf="msg.usuario_id !== userId">
+        {{ msg.usuario_id }}
+      </div>
+      <div class="contenido">
+        {{ msg.mensaje }}
+      </div>
+      <div class="fecha">
+        {{ msg.fecha | date:'short' }}
+      </div>
+    </div>
+  </div>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-item>
+        <ion-input [(ngModel)]="mensaje" placeholder="Escribí un mensaje..."></ion-input>
+        <ion-button (click)="enviarMensaje()">Enviar</ion-button>
+      </ion-item>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
