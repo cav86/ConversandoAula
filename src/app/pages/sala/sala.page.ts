@@ -20,17 +20,20 @@ export class SalaPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.sala = this.route.snapshot.paramMap.get('nombreSala')!;
-    const {
-      data: { user }
-    } = await this.supabase.client.auth.getUser();
-    this.userId = user?.id ?? null;
-    if (!this.userId) {
-      alert('No se pudo obtener el usuario actual.');
-      return;
-    }
-    this.cargarMensajes();
+  this.sala = this.route.snapshot.paramMap.get('nombreSala')!;
+  
+  const { data: { user } } = await this.supabase.client.auth.getUser();
+  this.userId = user?.id ?? null;
+
+  if (!this.userId || !this.sala) {
+    alert('Faltan datos para entrar al chat');
+    return;
   }
+
+  this.cargarMensajes();
+  this.escucharNuevosMensajes();
+}
+
 
   async cargarMensajes() {
     const { data, error } = await this.supabase.client
@@ -66,7 +69,27 @@ export class SalaPage implements OnInit {
   }
 
   this.mensaje = '';
-  this.cargarMensajes();
+  //this.cargarMensajes(); //lo comento para que no se envíe 2 veces el mensaje
 }
+
+escucharNuevosMensajes() {
+  this.supabase.client
+    .channel('mensajes-realtime')
+    .on(
+      'postgres_changes',
+      {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'mensajes',
+        filter: `sala=eq.${this.sala}`
+      },
+      (payload) => {
+        const nuevo = payload.new;
+        this.mensajes.push(nuevo);
+      }
+    )
+    .subscribe();
+}
+
 
 }
